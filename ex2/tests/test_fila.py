@@ -40,3 +40,7 @@ def atender(tipos):
 
 def test_ordem_de_chegada():
     assert atender(["normal", "normal"]) == ["N1", "N2"]
+
+
+def test_prioritaria_na_frente():
+    assert atender(["normal", "prioritaria"]) == ["P1", "N1"]
