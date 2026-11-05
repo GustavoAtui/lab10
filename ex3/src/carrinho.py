@@ -1,5 +1,4 @@
-CUPONS = {"DEZ": 10, "VINTE": 20}  # codigo -> porcentagem de desconto
-MINIMOS = {"DEZ": 10000, "VINTE": 30000}  # codigo -> subtotal minimo
+CUPONS = {"DEZ": (10, 10000), "VINTE": (20, 30000)}  # codigo -> (porcentagem, minimo)
 
 
 class Carrinho:
@@ -22,6 +21,8 @@ class Carrinho:
     @property
     def total(self):
         desconto = 0
-        if self._cupom and self._subtotal >= MINIMOS[self._cupom]:
-            desconto = CUPONS[self._cupom]
+        if self._cupom:
+            porcentagem, minimo = CUPONS[self._cupom]
+            if self._subtotal >= minimo:
+                desconto = porcentagem
         return self._subtotal * (100 - desconto) // 100
