@@ -11,3 +11,8 @@ def test_numeracao_por_tipo():
     f = Fila()
     senhas = [f.emitir(t) for t in ["normal", "prioritaria", "normal", "prioritaria"]]
     assert senhas == ["N1", "P1", "N2", "P2"]
+
+
+def test_tipo_invalido():
+    with pytest.raises(ValueError):
+        Fila().emitir("vip")
