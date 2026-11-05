@@ -24,3 +24,8 @@ def test_aguardando():
     f.emitir("normal")
     f.emitir("prioritaria")
     assert f.aguardando == 2
+
+
+def test_chamar_vazia():
+    with pytest.raises(IndexError):
+        Fila().chamar()
