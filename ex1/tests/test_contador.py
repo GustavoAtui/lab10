@@ -14,6 +14,7 @@ CASOS = [
     ("guarda-chuva", {"guarda-chuva": 1}),
     (",dia, ;dia;", {"dia": 2}),
     (":dia:  ?dia?", {"dia": 2}),
+    ("... !", {}),
 ]
 
 
