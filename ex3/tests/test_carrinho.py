@@ -19,6 +19,18 @@ def test_quantidade():
     assert c.total == 5000
 
 
+def test_quantidade_um():
+    c = Carrinho()
+    c.adicionar(2500, quantidade=1)
+    assert c.total == 2500
+
+
+@pytest.mark.parametrize("qtd", [0, 1.5])
+def test_quantidade_invalida(qtd):
+    with pytest.raises(ValueError):
+        Carrinho().adicionar(2500, quantidade=qtd)
+
+
 def test_preco_zero():
     with pytest.raises(ValueError):
         Carrinho().adicionar(0)
