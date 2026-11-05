@@ -54,3 +54,7 @@ def test_normal_depois_de_duas_prioritarias():
 def test_contagem_zera_apos_normal():
     tipos = ["normal", "normal"] + ["prioritaria"] * 4
     assert atender(tipos) == ["P1", "P2", "N1", "P3", "P4", "N2"]
+
+
+def test_sem_normal_limite_nao_vale():
+    assert atender(["prioritaria"] * 3) == ["P1", "P2", "P3"]
