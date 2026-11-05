@@ -18,10 +18,11 @@ class Fila:
         return len(self._filas["normal"]) + len(self._filas["prioritaria"])
 
     def chamar(self):
-        if self._filas["prioritaria"] and not (self._seguidas >= 2 and self._filas["normal"]):
-            self._seguidas += 1
-            return self._filas["prioritaria"].pop(0)
-        if self._filas["normal"]:
+        normais, prioritarias = self._filas["normal"], self._filas["prioritaria"]
+        if normais and (self._seguidas >= 2 or not prioritarias):
             self._seguidas = 0
-            return self._filas["normal"].pop(0)
+            return normais.pop(0)
+        if prioritarias:
+            self._seguidas += 1
+            return prioritarias.pop(0)
         raise IndexError("fila vazia")
