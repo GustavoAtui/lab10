@@ -4,6 +4,7 @@ from contador import contar_palavras
 
 CASOS = [
     ("", {}),
+    ("teste", {"teste": 1}),
 ]
 
 
