@@ -1,5 +1,5 @@
-CUPONS = {"DEZ": 10}  # codigo -> porcentagem de desconto
-MINIMOS = {"DEZ": 10000}  # codigo -> subtotal minimo
+CUPONS = {"DEZ": 10, "VINTE": 20}  # codigo -> porcentagem de desconto
+MINIMOS = {"DEZ": 10000, "VINTE": 30000}  # codigo -> subtotal minimo
 
 
 class Carrinho:
