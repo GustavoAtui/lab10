@@ -24,11 +24,20 @@ def test_preco_zero():
         Carrinho().adicionar(0)
 
 
-def test_cupom():
+def com_cupom(subtotal, *cupons):
     c = Carrinho()
-    c.adicionar(5000)
-    c.aplicar_cupom("DEZ")
-    assert c.total == 4500
+    c.adicionar(subtotal)
+    for codigo in cupons:
+        c.aplicar_cupom(codigo)
+    return c.total
+
+
+@pytest.mark.parametrize(
+    "subtotal, esp",
+    [(5000, 5000), (9999, 9999), (10000, 9000)],
+)
+def test_dez(subtotal, esp):
+    assert com_cupom(subtotal, "DEZ") == esp
 
 
 def test_cupom_desconhecido():
@@ -40,4 +49,12 @@ def test_item_apos_cupom():
     c = Carrinho()
     c.aplicar_cupom("DEZ")
     c.adicionar(1000)
-    assert c.total == 900
+    assert c.total == 1000
+
+
+def test_cupom_vale_ao_chegar_no_minimo():
+    c = Carrinho()
+    c.adicionar(5000)
+    c.aplicar_cupom("DEZ")
+    c.adicionar(5000)
+    assert c.total == 9000
