@@ -8,6 +8,7 @@ CASOS = [
     ("bom dia", {"bom": 1, "dia": 1}),
     ("dia a dia", {"dia": 2, "a": 1}),
     ("Dia dia DIA", {"dia": 3}),
+    ("fim.   Fim!", {"fim": 2}),
 ]
 
 
