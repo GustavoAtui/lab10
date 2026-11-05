@@ -15,3 +15,6 @@ class Fila:
     @property
     def aguardando(self):
         return len(self._senhas)
+
+    def chamar(self):
+        raise IndexError("fila vazia")
