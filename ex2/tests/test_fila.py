@@ -29,3 +29,14 @@ def test_aguardando():
 def test_chamar_vazia():
     with pytest.raises(IndexError):
         Fila().chamar()
+
+
+def atender(tipos):
+    f = Fila()
+    for t in tipos:
+        f.emitir(t)
+    return [f.chamar() for _ in tipos]
+
+
+def test_ordem_de_chegada():
+    assert atender(["normal", "normal"]) == ["N1", "N2"]
