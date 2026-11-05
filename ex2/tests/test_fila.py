@@ -49,3 +49,8 @@ def test_prioritaria_na_frente():
 def test_normal_depois_de_duas_prioritarias():
     tipos = ["normal", "prioritaria", "prioritaria", "prioritaria"]
     assert atender(tipos) == ["P1", "P2", "N1", "P3"]
+
+
+def test_contagem_zera_apos_normal():
+    tipos = ["normal", "normal"] + ["prioritaria"] * 4
+    assert atender(tipos) == ["P1", "P2", "N1", "P3", "P4", "N2"]
