@@ -40,6 +40,14 @@ def test_dez(subtotal, esp):
     assert com_cupom(subtotal, "DEZ") == esp
 
 
+@pytest.mark.parametrize(
+    "subtotal, esp",
+    [(29999, 29999), (30000, 24000)],
+)
+def test_vinte(subtotal, esp):
+    assert com_cupom(subtotal, "VINTE") == esp
+
+
 def test_cupom_desconhecido():
     with pytest.raises(ValueError):
         Carrinho().aplicar_cupom("XYZ")
